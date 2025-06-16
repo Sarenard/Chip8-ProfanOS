@@ -1,0 +1,10 @@
+[unstable]
+build-std = ["core", "alloc"]
+
+[build]
+target = "i386.json"
+rustflags = [
+  "-C", "link-arg=-Tlink.ld",
+  "-C", "link-arg=-m", "-C", "link-arg=elf_i386",   # <- forcer ld à linker en 32 bits
+  "-C", "link-args=-L build/link -l:libc.so",
+]

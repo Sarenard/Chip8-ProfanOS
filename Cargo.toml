@@ -1,0 +1,21 @@
+[package]
+name = "rust-profanos-template"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rust-profanos = "=1.0.1"
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
+[[bin]]
+name = "testrust"
+path = "src/main.rs"
+test = false
+bench = false
+doc = false
+harness = false
