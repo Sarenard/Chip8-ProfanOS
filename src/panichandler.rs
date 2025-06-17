@@ -1,6 +1,6 @@
 use core::panic::PanicInfo;
 
-use crate::libs::libc::exit;
+use crate::libs::std::process::exit;
 
 #[panic_handler]
 fn panic(_info: &PanicInfo) -> ! {

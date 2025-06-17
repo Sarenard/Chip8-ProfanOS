@@ -123,7 +123,7 @@ impl<T: PixelHandler, T2: KeyboardHandler, T3: RandomHandler> VM<T, T2, T3> {
         let instruction = chip8::insts::Instruction::new(instruction);
 
         let s = format!("instruction : {:?}", instruction);
-        println!("{}", s);
+        // println!("{}", s);
 
         match instruction {
             Instruction::ClearScreen => {

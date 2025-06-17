@@ -2,6 +2,7 @@
 
 run: # to directly run the excecutable in profan
 	mv build/link/prog build/ProfanOS/sys_dir/user/prog
+	cp data/* build/ProfanOS/sys_dir/user/
 	make -C build/ProfanOS disk run
 
 build:
@@ -18,5 +19,8 @@ build:
 	mv target/i386/debug/testrust build/link/prog
 
 clean:
+	rm -f -Rf build
+
+fclean:
 	rm -f -Rf build
 	rm -f -Rf target

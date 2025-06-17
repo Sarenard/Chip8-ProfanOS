@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-rust-profanos = "=1.0.1"
+rust-profanos = "=1.0.3"
 
 [profile.dev]
 panic = "abort"
