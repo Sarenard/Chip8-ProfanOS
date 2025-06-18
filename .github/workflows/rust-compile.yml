@@ -1,0 +1,38 @@
+name: Compiler Rust en .elf
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Vérifier le code source
+        uses: actions/checkout@v3  # Version la plus récente de l'action checkout
+
+      - name: Installer les dépendances
+        run: |
+          sudo apt-get update
+          curl https://sh.rustup.rs -sSf | sh -s -- -y
+          rustup default nightly
+          rustup target add i686-unknown-linux-gnu
+          rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+          sudo apt-get install -y gcc-multilib g++-multilib
+          sudo apt-get install -y make python3 gcc g++ nasm grub-common xorriso grub-pc-bin mtools
+
+      - name: Compilation
+        run: |
+          make build  # Utilisation de la commande make pour compiler ton projet
+
+      - name: Release to GitHub
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          title: "Chip-8 emulator for profanOS"
+          automatic_release_tag: latest
+          repo_token: "${{ secrets.GIT_TOKEN }}"
+          prerelease: false
+          files: |
+            build/output/*

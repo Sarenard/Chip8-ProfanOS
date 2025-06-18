@@ -16,7 +16,11 @@ build:
 	mkdir build/link
 	cp build/ProfanOS/out/zlibs/libc.so build/link/libc.so
 	cargo build
-	mv target/i386/debug/testrust build/link/prog
+	
+	mkdir build/output
+	mv target/i386/debug/testrust build/output/chip8.elf
+
+	tar -czf build/output/ROMS.tar.gz -C data .
 
 clean:
 	rm -f -Rf build
